@@ -6,6 +6,8 @@
 
 ML: Numpy, Pandas, SkLearn
 
+API: Flask
+
 Dataset: https://www.kaggle.com/fedesoriano/heart-failure-prediction
 
 Задача: предсказать значение сердечной недостаточности (бинарная классификация: 1 - сердечная недосточность, 0 - отсутствие)
