@@ -31,7 +31,7 @@ load_model(modelpath)
 
 @app.route("/", methods=["GET"])
 def general():
-    return """Hello"""
+    return """Welcome to fraudelent prediction process. Please use 'http://<address>/predict' to POST"""
 
 
 @app.route("/predict", methods=["POST"])
