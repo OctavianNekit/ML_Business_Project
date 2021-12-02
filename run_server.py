@@ -25,13 +25,13 @@ def load_model(model_path):
     print(model)
 
 
-modelpath = "app/models/GB_pipeline.dill"
+modelpath = "models/GB_pipeline.dill"
 load_model(modelpath)
 
 
 @app.route("/", methods=["GET"])
 def general():
-    return """Welcome to fraudelent prediction process. Please use 'http://<address>/predict' to POST"""
+    return """Hello"""
 
 
 @app.route("/predict", methods=["POST"])
