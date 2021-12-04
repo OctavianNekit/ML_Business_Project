@@ -1,13 +1,12 @@
 import dill
 import pandas as pd
 import os
-
-dill._dill._reverse_typemap['ClassType'] = type
-
 import flask
 import logging
 from logging.handlers import RotatingFileHandler
 from time import strftime
+
+dill._dill._reverse_typemap['ClassType'] = type
 
 app = flask.Flask(__name__)
 model = None
@@ -31,7 +30,7 @@ load_model(modelpath)
 
 @app.route("/", methods=["GET"])
 def general():
-    return """Welcome to fraudelent prediction process. Please use 'http://<address>/predict' to POST"""
+    return """Welcome to the stroke prediction website,  Please use 'http://<address>/predict' to POST"""
 
 
 @app.route("/predict", methods=["POST"])
@@ -40,21 +39,67 @@ def predict():
     dt = strftime("[%Y-%b-%d %H:%M:%S]")
     if flask.request.method == "POST":
 
-        description, company_profile, benefits = "", "", ""
+        Sex, ChestPainType, RestingECG, ExerciseAngina, ST_Slope, Age, RestingBP, Cholesterol, FastingBS, MaxHR, Oldpeak \
+            = '', '', '', '', '', int, int, int, int, int, float
+
         request_json = flask.request.get_json()
-        if request_json["description"]:
-            description = request_json['description']
 
-        if request_json["company_profile"]:
-            company_profile = request_json['company_profile']
+        if request_json["Sex"]:
+            Sex = request_json['Sex']
 
-        if request_json["benefits"]:
-            benefits = request_json['benefits']
-        logger.info(f'{dt} Data: description={description}, company_profile={company_profile}, benefits={benefits}')
+        if request_json["ChestPainType"]:
+            ChestPainType = request_json['ChestPainType']
+
+        if request_json["RestingECG"]:
+            RestingECG = request_json['RestingECG']
+
+        if request_json["ExerciseAngina"]:
+            ExerciseAngina = request_json['ExerciseAngina']
+
+        if request_json["ST_Slope"]:
+            ST_Slope = request_json['ST_Slope']
+
+        if request_json["Age"]:
+            Age = request_json['Age']
+
+        if request_json["RestingBP"]:
+            RestingBP = request_json['RestingBP']
+
+        if request_json["Cholesterol"]:
+            Cholesterol = request_json['Cholesterol']
+
+        if request_json["FastingBS"]:
+            FastingBS = request_json['FastingBS']
+
+        if request_json["MaxHR"]:
+            MaxHR = request_json['MaxHR']
+
+        if request_json["Oldpeak"]:
+            Oldpeak = request_json['Oldpeak']
+
+        logger.info(f'{dt} Data: Sex={Sex}, '
+                    f'ChestPainType={ChestPainType}, '
+                    f'RestingECG={RestingECG}',
+                    f'ExerciseAngina={ExerciseAngina}',
+                    f'ST_Slope={ST_Slope}',
+                    f'Age={Age}',
+                    f'RestingBP={RestingBP}',
+                    f'Cholesterol={Cholesterol}',
+                    f'FastingBS={FastingBS}',
+                    f'MaxHR={MaxHR}',
+                    f'Oldpeak={Oldpeak}')
         try:
-            preds = model.predict_proba(pd.DataFrame({"description": [description],
-                                                      "company_profile": [company_profile],
-                                                      "benefits": [benefits]}))
+            preds = model.predict_proba(pd.DataFrame({"Sex": [Sex],
+                                                      "ChestPainType": [ChestPainType],
+                                                      "RestingECG": [RestingECG],
+                                                      "ExerciseAngina": [ExerciseAngina],
+                                                      "ST_Slope": [ST_Slope],
+                                                      "Age": [Age],
+                                                      "RestingBP": [RestingBP],
+                                                      "Cholesterol": [Cholesterol],
+                                                      "FastingBS": [FastingBS],
+                                                      "MaxHR": [MaxHR],
+                                                      "Oldpeak": [Oldpeak]}))
         except AttributeError as e:
             logger.warning(f'{dt} Exception: {str(e)}')
             data['predictions'] = str(e)
