@@ -1,10 +1,11 @@
-import dill
-import pandas as pd
-import os
-import flask
 import logging
+import os
 from logging.handlers import RotatingFileHandler
 from time import strftime
+import dill
+import flask
+import pandas as pd
+
 
 dill._dill._reverse_typemap['ClassType'] = type
 
@@ -24,7 +25,7 @@ def load_model(model_path):
     print(model)
 
 
-modelpath = "./app/models/GB_pipeline.dill"
+modelpath = "/Users/octavian/Desktop/Обучение_GeekBrains/Курсы/ML_Business_Project/app/models/GB_pipeline.dill"
 load_model(modelpath)
 
 
