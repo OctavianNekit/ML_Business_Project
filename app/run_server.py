@@ -6,7 +6,6 @@ import dill
 import flask
 import pandas as pd
 
-
 dill._dill._reverse_typemap['ClassType'] = type
 
 app = flask.Flask(__name__)
@@ -41,7 +40,7 @@ def predict():
     if flask.request.method == "POST":
 
         Sex, ChestPainType, RestingECG, ExerciseAngina, ST_Slope, Age, RestingBP, Cholesterol, FastingBS, MaxHR, Oldpeak \
-            = '', '', '', '', '', int, int, int, int, int, float
+            = '', '', '', '', '', '', '', '', '', '', ''
 
         request_json = flask.request.get_json()
 
