@@ -24,7 +24,7 @@ def load_model(model_path):
     print(model)
 
 
-modelpath = "/Users/octavian/Desktop/Обучение_GeekBrains/Курсы/ML_Business_Project/app/models/GB_pipeline.dill"
+modelpath = "/Users/octavian/ML_Business_Project/app/models/GB_pipeline.dill"
 load_model(modelpath)
 
 
