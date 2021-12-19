@@ -29,9 +29,9 @@ Dataset: https://www.kaggle.com/fedesoriano/heart-failure-prediction
 Model: GradientBoostingClassifier
 
 Для запуска модели:
-1. git clone https://github.com/OctavianNekit/ML_Business_Project![image](https://user-images.githubusercontent.com/39792060/146687118-1388026d-c715-4ab0-8512-b484a244f37c.png)
-2. cd ML_Business_Project![image](https://user-images.githubusercontent.com/39792060/146687129-0b59b895-aaba-4e50-947a-279356cd86d2.png)
-3. docker build -t octaviannekit/ml_business_project .![image](https://user-images.githubusercontent.com/39792060/146687137-1aa448c7-cfc4-4226-8552-1f3ccca23708.png)
-4. docker run -d -p 8180:8180 -p 8181:8181 -v <...>:/app/app/models octaviannekit/ml_business_project![image](https://user-images.githubusercontent.com/39792060/146687141-ca090015-3d2f-4b6d-8ccc-b28c32280669.png)
+1. git clone https://github.com/OctavianNekit/ML_Business_Project
+2. cd ML_Business_Project
+3. docker build -t octaviannekit/ml_business_project .
+4. docker run -d -p 8180:8180 -p 8181:8181 -v <...>:/app/app/models octaviannekit/ml_business_project
 (Вместо <...> прописать путь к модели)
 5. Перейти на localhost:8181
